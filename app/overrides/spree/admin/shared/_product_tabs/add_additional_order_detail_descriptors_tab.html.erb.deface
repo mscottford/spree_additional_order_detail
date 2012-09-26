@@ -1,0 +1,6 @@
+<!-- insert_bottom "[data-hook='admin_product_tabs'], #admin_product_tabs[data-hook]" -->
+
+    <li<%== ' class="active"' if current == I18n.t('additional_order_detail_descriptors') %>>
+      <%= link_to t(:additional_order_detail_descriptors), selected_admin_product_additional_order_detail_descriptors_url(@product) %>
+    </li>
+

@@ -1,4 +1,5 @@
 class Spree::AdditionalOrderDetailModel::NameValue < ActiveRecord::Base
   attr_accessible :name, :value
-  belongs_to :order_detailable, polymorphic: true
+
+  has_many :additional_order_details, as: :detailed
 end

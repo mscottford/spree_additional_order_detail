@@ -1,0 +1,25 @@
+<%= form_for(@spree_vehicle_detail) do |f| %>
+  <% if @spree_vehicle_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spree_vehicle_detail.errors.count, "error") %> prohibited this spree_vehicle_detail from being saved:</h2>
+
+      <ul>
+      <% @spree_vehicle_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :make %><br />
+    <%= f.text_field :make %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

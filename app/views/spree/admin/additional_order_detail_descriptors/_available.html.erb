@@ -1,0 +1,25 @@
+<h4><%= t("add_additional_order_detail_descriptors") %></h4>
+<table class="index">
+  <tr>
+    <th><%= t("name") %></th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @available_additional_order_detail_models.each do |name| %>
+  <tr>
+    <td><%=name %></td>
+    <td class="actions"><%= link_to icon('add') + ' ' + t("select"),
+                            url_for(:controller => "admin/additional_order_detail_descriptors",
+                                    :product_id => @product.permalink,
+                                    :id => name.to_s,
+                                    :action => "select",
+                                    :additional_order_detail_model_name =>  name.to_s),
+                           :remote => true, :class => 'iconlink' %>
+    </td>
+  </tr>
+  <% end %>
+  <% if @available_additional_order_detail_models.empty? %>
+  <tr>
+    <td colspan="3"><%= t('none_available') %></td>
+  </tr>
+  <% end %>
+</table>

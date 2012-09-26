@@ -22,9 +22,14 @@ module SpreeAdditionalOrderDetail
     initializer "spree.register.additional_order_detail_models" do |app|
       app.config.spree.add_class('additional_order_detail_models')
       app.config.spree.additional_order_detail_models = [
-                                                         Spree::AdditionalOrderDetailModel::NameValue,
-                                                         Spree::AdditionalOrderDetailModel::Boolean
+#                                                         Spree::AdditionalOrderDetailModel::NameValue,
+#                                                         Spree::AdditionalOrderDetailModel::Boolean
+                                                         Spree::AdditionalOrderDetailModel::VehicleDetail,
+                                                         Spree::AdditionalOrderDetailModel::AircraftDetail
+
                                                         ]
+
+# use these above to create descriptors in the admin app
     end
   end
 end

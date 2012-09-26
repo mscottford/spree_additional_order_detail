@@ -2,4 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  notice_messages:
+    additional_order_detail_descriptor_removed: "Additional Order Detail Descriptor Removed"
+  additional_order_detail_descriptors: "Additional Order Detail Descriptors"
+  

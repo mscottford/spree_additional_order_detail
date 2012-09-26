@@ -1,0 +1,10 @@
+
+
+Product has descriptor
+  descriptor has 
+    # name of class we'll need to instantiate in order to attach to line item
+
+LineItem
+    has many additional_order_details
+    additional_order_details
+      belongs_to , polymorphic: true

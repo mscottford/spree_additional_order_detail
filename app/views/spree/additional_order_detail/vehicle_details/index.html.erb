@@ -1,0 +1,25 @@
+<h1>Listing spree_vehicle_details</h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Make</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @spree_vehicle_details.each do |spree_vehicle_detail| %>
+  <tr>
+    <td><%= spree_vehicle_detail.year %></td>
+    <td><%= spree_vehicle_detail.make %></td>
+    <td><%= link_to 'Show', spree_vehicle_detail %></td>
+    <td><%= link_to 'Edit', edit_spree_vehicle_detail_path(spree_vehicle_detail) %></td>
+    <td><%= link_to 'Destroy', spree_vehicle_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vehicle detail', new_spree_vehicle_detail_path %>

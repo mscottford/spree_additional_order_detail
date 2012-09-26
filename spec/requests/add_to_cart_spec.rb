@@ -19,7 +19,11 @@ describe 'viewing the cart page' do
     include_context 'cart_that_requires_additional_order_detail'
 
     context '#already present' do
-
+      before do
+        #click_link 'Proceed to Provide Additional Info'
+        #fill_in 
+        #fill_in 
+      end
       context '#fully' do
         it 'should show the add-to-cart button' do
           page.should have_link('Checkout')
