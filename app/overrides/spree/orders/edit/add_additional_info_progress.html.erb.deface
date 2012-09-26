@@ -1,0 +1,8 @@
+<!-- insert_before "[data-hook=cart_buttons] code[erb-loud]:contains('checkout_state_path')" -->
+
+<% if @order.requires_additional_detail? %>
+  <h3>We will still need to collect the following information before processing your order</h3>
+<% end %>
+
+<h4>Edit addtional order information</h4>
+<%# additional_order_detail_steps %>
