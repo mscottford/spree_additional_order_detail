@@ -1,0 +1,25 @@
+<h1>Listing spree_aircraft_details</h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Aircraft type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @spree_aircraft_details.each do |spree_aircraft_detail| %>
+  <tr>
+    <td><%= spree_aircraft_detail.year %></td>
+    <td><%= spree_aircraft_detail.aircraft_type %></td>
+    <td><%= link_to 'Show', spree_aircraft_detail %></td>
+    <td><%= link_to 'Edit', edit_spree_aircraft_detail_path(spree_aircraft_detail) %></td>
+    <td><%= link_to 'Destroy', spree_aircraft_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Aircraft detail', new_spree_aircraft_detail_path %>

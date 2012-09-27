@@ -7,7 +7,11 @@ module SpreeAdditionalOrderDetail
  
     module InstanceMethods
       def requires_additional_detail?
-        accepts_additional_detail? && self.additional_order_detail_descriptors.present?
+        self.additional_order_detail_descriptors.present?
+      end
+
+      def requires_additional_detail_for?(step)
+        self.additional_order_detail_descriptors.where(:model_name => step).exists?
       end
     end 
 

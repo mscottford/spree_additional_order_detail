@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Year:</b>
+  <%= @spree_vehicle_detail.year %>
+</p>
+
+<p>
+  <b>Make:</b>
+  <%= @spree_vehicle_detail.make %>
+</p>
+
+
+<%= link_to 'Edit', edit_spree_vehicle_detail_path(@spree_vehicle_detail) %> |
+<%= link_to 'Back', spree_vehicle_details_path %>

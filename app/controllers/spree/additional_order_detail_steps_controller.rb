@@ -2,11 +2,10 @@ module Spree
   class AdditionalOrderDetailStepsController < BaseController
     include Wicked::Wizard
 
+    steps :dummy
+
     before_filter :load_order
     before_filter :determine_steps
-
-    def index
-    end
 
     def show
       # for each applicable line item,
@@ -14,8 +13,8 @@ module Spree
       # then build the specific associated model in preparation for 
       # showing the page
       select_relevant_line_items { |line_item| 
-        additional_order_detail = line_item.build_additional_order_detail
-        additional_order_detail.detailed = step.constantize.new
+        additional_order_detail = line_item.additional_order_details.build
+        additional_order_detail.detailed = step.to_s.constantize.new
       }
 
       # when :finish
@@ -44,7 +43,7 @@ module Spree
       def select_relevant_line_items
         @line_items = @order.line_items.
                             select { |line_item| 
-                                      line_item.needs_additional_info_for?(step) 
+                                      line_item.needs_additional_detail_for?(step) 
                             }
 
         @line_items.each { |line_item|
