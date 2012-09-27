@@ -16,7 +16,10 @@ describe "AdditionalOrderDetailDescriptorsController" do
       # above caused my click_link target to not be found so I gave up.  _you_ figure it out and
       # send me a pull request
 
-      # click_link 'new_descriptor_link'
+      # getting cannot load such file 'sass'
+
+      save_and_open_page
+      click_link 'new_descriptor_link'
     end
   end
 end

@@ -47,15 +47,25 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:each) do
-    if example.metadata[:js]
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
       DatabaseCleaner.strategy = :truncation, {
         :except => [
                     'spree_countries', 'spree_zones',
                     'spree_zone_members', 'spree_states',
                     'spree_roles' ]}
-    else
-      DatabaseCleaner.strategy = :transaction
     end
+
+    #if example.metadata[:js]
+      #DatabaseCleaner.strategy = :truncation, {
+      #  :except => [
+       #             'spree_countries', 'spree_zones',
+       #             'spree_zone_members', 'spree_states',
+       #             'spree_roles' ]}
+    #else
+      # DatabaseCleaner.strategy = :transaction
+    #end
 
     DatabaseCleaner.start
   end

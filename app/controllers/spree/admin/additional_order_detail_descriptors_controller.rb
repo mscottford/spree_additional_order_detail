@@ -23,7 +23,7 @@ module Spree
     def select
       @product = Product.find_by_param!(params[:product_id])
       model_name = params[:additional_order_detail_model_name]
-      @product.additional_order_detail_descriptors.create(name: model_name, model_name: model_name)
+      @product.additional_order_detail_descriptors.create(step_name: model_name.split("::").last.underscore.to_sym, model_name: model_name)
 
       @additional_order_detail_descriptors = @product.additional_order_detail_descriptors
       set_available_additional_order_detail_descriptors

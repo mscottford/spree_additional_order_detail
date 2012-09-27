@@ -4,6 +4,14 @@ module Spree
       line_items.map { |li| li.additional_detail_steps }.flatten.uniq.map(&:to_sym)
     end
 
+    # the next step of the order detail collection that we need 
+    def current_step
+      additional_detail_steps.each do |step|
+        return step if line_items.any? { |li| li.needs_additional_detail_for?(step) }
+      end
+
+      return :finish
+    end
     def requires_additional_detail?
       line_items.any? { |li| li.requires_additional_detail? }
     end

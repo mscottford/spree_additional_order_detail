@@ -2,7 +2,7 @@ module Spree
   LineItem.class_eval do
     has_many :additional_order_details
 
-    attr_accessible :additional_order_detail_attributes
+    attr_accessible :additional_order_details_attributes
 
     accepts_nested_attributes_for :additional_order_details
 
@@ -31,7 +31,10 @@ module Spree
       return false if step == :finish
       
       # we require details but don't yet have a matching one
-      requires_additional_detail_for?(step) && (self.additional_order_details.select { |aod| aod.detailed.class.to_s == step }).empty?
+      requires_additional_detail_for?(step) && 
+        (self.additional_order_details.select { |aod| 
+           AdditionalOrderDetailDescriptor.find_by_model_name(aod.detailed.class.to_s).step_name == step.to_s
+         }).empty?
     end
 
     def requires_additional_detail_for?(step)

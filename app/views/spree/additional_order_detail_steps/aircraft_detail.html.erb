@@ -1,0 +1,19 @@
+<%= render :layout => 'form' do |item_form| %>  
+
+<h3>Aircraft Detail</h3>
+
+<%= item_form.fields_for :additional_order_details, item_form.object.additional_order_details.detect { |aod| aod.detailed_type == 'Spree::AdditionalOrderDetailModel::AircraftDetail'} do |detail_form| %>
+  <%= detail_form.fields_for :detailed do |f| %>
+    <div class="field">
+      <%= f.label :year %><br />
+      <%= f.text_field :year %>
+    </div>
+    <div class="field">
+      <%= f.label :aircraft_type %><br />
+      <%= f.text_field :aircraft_type %>
+    </div>
+
+  <% end %>
+<% end %>
+<% end %>
+

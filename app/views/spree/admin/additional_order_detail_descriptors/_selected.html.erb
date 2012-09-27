@@ -1,12 +1,12 @@
 <table class="index">
   <tr>
-    <th><%= t("name") %></th>
+    <th><%= t("step_name") %></th>
     <th><%= t("model_name") %></th>
     <th>&nbsp;</th>
   </tr>
   <% @additional_order_detail_descriptors.each do |additional_order_detail_descriptor| %>
     <tr>
-      <td><%= additional_order_detail_descriptor.name %></td>
+      <td><%= additional_order_detail_descriptor.step_name %></td>
       <td><%= additional_order_detail_descriptor.model_name %></td>
       <td class="actions">
       <%= link_to_with_icon 'delete',  t("remove"), remove_admin_product_additional_order_detail_descriptor_url(@product, additional_order_detail_descriptor) %>
