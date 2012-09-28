@@ -7,4 +7,5 @@ group :development, :test do
 end
 
 gem 'spree', github: 'spree/spree', branch: '1-2-stable'
+gem 'backbone-on-rails'
 gemspec

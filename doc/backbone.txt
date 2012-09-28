@@ -1,0 +1,23 @@
+rails g backbone:scaffold <your model>
+
+be rails g backbone:scaffold vehicle_detail
+
+ruby-1.9.3-p194 ~/src/github/spree_additional_order_detail$: be rails g backbone:scaffold vehicle_detail
+      create  app/assets/javascripts/models/vehicle_detail.js.coffee
+      create  app/assets/javascripts/collections/vehicle_details.js.coffee
+      create  app/assets/javascripts/routers/vehicle_details.js.coffee
+      create  app/assets/javascripts/views/vehicle_details
+      create  app/assets/javascripts/views/vehicle_details/index.js.coffee
+      create  app/assets/templates/vehicle_details
+      create  app/assets/templates/vehicle_details/index.jst.eco
+
+
+
+
+
+
+So:
+
+ this.$('.someclass'), or  @$('.someclass')
+
+will limit to only within 'me'

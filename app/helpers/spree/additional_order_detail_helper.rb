@@ -1,0 +1,2 @@
+module Spree::AdditionalOrderDetailHelper
+end
