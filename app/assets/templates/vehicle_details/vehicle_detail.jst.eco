@@ -1,1 +1,1 @@
-<%= @vehicle_detail.get('make') %> : <%= @vehicle_detail.get('year') %>
+<%= @vehicle_detail.get('vehicle_detail').make %> : <%= @vehicle_detail.get('vehicle_detail').year %>
