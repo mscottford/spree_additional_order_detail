@@ -11,7 +11,19 @@ module Spree
     end
 
     def create
-      respond_with VehicleDetail.create(params[:vehicle_detail])
+      line_item_id = params[:line_item_id]
+
+      vehicle_detail = VehicleDetail.create(params[:vehicle_detail])
+
+      line_item = Spree::LineItem.find(line_item_id)
+
+      additional_order_detail = line_item.additional_order_details.build
+      additional_order_detail.detailed = vehicle_detail
+      additional_order_detail.line_item = line_item
+      
+      additional_order_detail.save!
+
+      respond_with vehicle_detail
     end
 
     def update

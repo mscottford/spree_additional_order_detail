@@ -3,18 +3,19 @@
 
   <%= content_for :nav_tabs do %>
     <li <%= "class='active'" if first %> >
-      <a href="#container_<%= aod.object_id%>" data-toggle="tab">
+      <a href="#tab_<%= aod.object_id%>" data-toggle="tab">
       <%= aod.detailed_type %>
       </a>
     </li>
   <% end %>
 
   <%= content_for :tab_contents do %>
+    <% type = aod.detailed.class.name.underscore %>
     <%= content_tag "div", 
                      "Loading...", 
-                      { id: "container_#{aod.object_id}", 
-                        class: "tab-pane#{ first ? ' active' : ''}",
-                        data: { detailed: aod.detailed }
+                      { id: "tab_#{aod.object_id}", 
+                        class: "container_#{type} tab-pane#{ first ? ' active' : ''}",
+                        data: { type.to_sym => aod.detailed, line_item_id: aod.line_item_id }
                       }
     %>
   <% end %>

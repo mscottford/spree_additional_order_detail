@@ -4,7 +4,7 @@ window.SpreeAOD =
   Views: {}
   Routers: {}
   init: ->
-    new SpreeAOD.Routers.VehicleDetails()
+    new SpreeAOD.Routers.Main()
     Backbone.history.start() #pushState: true)
 
 $(document).ready ->
