@@ -8,4 +8,7 @@ end
 
 gem 'spree', github: 'spree/spree', branch: '1-2-stable'
 gem 'backbone-on-rails'
+group :assets do
+  gem 'twitter-bootstrap-rails'
+end
 gemspec

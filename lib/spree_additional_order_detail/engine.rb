@@ -4,6 +4,8 @@ module SpreeAdditionalOrderDetail
     isolate_namespace Spree
     engine_name 'spree_additional_order_detail'
 
+#    ActiveRecord::Base.include_root_in_json = false
+
     config.autoload_paths += %W(#{config.root}/lib)
 
     # use rspec for tests
@@ -22,11 +24,8 @@ module SpreeAdditionalOrderDetail
     initializer "spree.register.additional_order_detail_models" do |app|
       app.config.spree.add_class('additional_order_detail_models')
       app.config.spree.additional_order_detail_models = [
-#                                                         Spree::AdditionalOrderDetailModel::NameValue,
-#                                                         Spree::AdditionalOrderDetailModel::Boolean
-                                                         Spree::AdditionalOrderDetailModel::VehicleDetail,
-                                                         Spree::AdditionalOrderDetailModel::AircraftDetail
-
+                                                         ::VehicleDetail,
+                                                         ::AircraftDetail
                                                         ]
 
 # use these above to create descriptors in the admin app

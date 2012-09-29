@@ -2,7 +2,7 @@
 
 <% if @order.incomplete_additional_detail? %>
 
-  <%= link_to 'Proceed to Provide Additional Info', additional_order_detail_step_path(@order.current_step), :class => 'button checkout primary' %>
+  <%= link_to 'Proceed to Provide Additional Info', additional_order_details_path, :class => 'button checkout primary' %>
 <% else %>
   <%= link_to t(:checkout), checkout_state_path(@order.checkout_steps.first), :class => 'button checkout primary', :id => 'checkout-link' %>
 <% end %>

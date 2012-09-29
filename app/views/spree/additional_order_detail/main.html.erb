@@ -1,1 +1,41 @@
-<div id="container">Loading...</div>
+<% @additional_order_details.each do |aod| %>
+  <% first = (@additional_order_details.first == aod) %>
+
+  <%= content_for :nav_tabs do %>
+    <li <%= "class='active'" if first %> >
+      <a href="#container_<%= aod.object_id%>" data-toggle="tab">
+      <%= aod.detailed_type %>
+      </a>
+    </li>
+  <% end %>
+
+  <%= content_for :tab_contents do %>
+    <%= content_tag "div", 
+                     "Loading...", 
+                      { id: "container_#{aod.object_id}", 
+                        class: "tab-pane#{ first ? ' active' : ''}",
+                        data: { detailed: aod.detailed }
+                      }
+    %>
+  <% end %>
+
+<% end %>
+
+<div class="container">
+  <div class="tab-pane" id="tabs-side">
+    <h3>Info we need</h3>
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs span2">
+        <%= yield :nav_tabs %>
+      </ul>
+      <div class="tab-content span5">
+
+        <%= yield :tab_contents %>
+
+      </div><!-- /.tab-content -->
+    </div><!-- /.tabbable -->
+  </div>
+</div>
+
+
+<%# content_tag "div", "Loading...", id: "container", data: { vehicle_details: VehicleDetail.all} %>   <%# ,  aircraft_details: AircraftDetail.all %>

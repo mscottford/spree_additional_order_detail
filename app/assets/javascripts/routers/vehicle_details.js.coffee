@@ -5,7 +5,7 @@ class SpreeAOD.Routers.VehicleDetails extends Backbone.Router
 
   initialize: ->
     @collection = new SpreeAOD.Collections.VehicleDetails()
-    @collection.fetch()
+    @collection.reset($('#container').data('vehicle-details'))
 
   index: ->
     view = new SpreeAOD.Views.VehicleDetailsIndex(collection: @collection)

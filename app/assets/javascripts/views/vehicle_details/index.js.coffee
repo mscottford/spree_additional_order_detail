@@ -26,9 +26,9 @@ class SpreeAOD.Views.VehicleDetailsIndex extends Backbone.View
       success: -> $('#new_vehicle_detail')[0].reset()
       error: @handleError
 
-  appendVehicleDetail: (vehicle_detail) ->
+  appendVehicleDetail: (vehicle_detail) =>
     view = new SpreeAOD.Views.VehicleDetail(model: vehicle_detail)
-    $('#vehicle_details').append(view.render().el)
+    @$('#vehicle_details').append(view.render().el)
 
   handleError: (vehicle_detail, response) ->
     if response.status == 422

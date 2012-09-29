@@ -3,4 +3,6 @@ class VehicleDetail < ActiveRecord::Base
 
   validates :make, presence: true
   validates :year, presence: true, numericality: true
+
+  has_one :additional_order_detail, as: :detailed
 end

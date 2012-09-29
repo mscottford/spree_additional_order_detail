@@ -1,5 +1,7 @@
 Spree::Core::Engine.routes.draw do
-  get "additional_order_detail" => 'AdditionalOrderDetail#main'
+  resources :aircraft_details
+
+  get "additional_order_detail" => 'AdditionalOrderDetail#main', as: :additional_order_details
 
 #  scope :additional_order_details do
 #    scope :api do
@@ -7,8 +9,6 @@ Spree::Core::Engine.routes.draw do
 #    end
 #  end
 
-
-  resources :additional_order_detail_steps
 
   namespace :admin do
     resources :products do

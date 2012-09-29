@@ -27,14 +27,22 @@ module Spree
       additional_order_details.present?
     end
 
+    def additional_detail_for(step)
+      return nil if step == :finish || !requires_additional_detail_for?(step)
+      
+      self.additional_order_details.detect { |aod| 
+         # map the model name of the detailed class to the step.
+         # if we are in this 'loop', and we map the step, then we will not 'need' additional 
+         # detail (we already have it!)
+         AdditionalOrderDetailDescriptor.find_by_model_name(aod.detailed.class.to_s).step_name == step.to_s
+       }
+    end
+
     def needs_additional_detail_for?(step)
       return false if step == :finish
       
       # we require details but don't yet have a matching one
-      requires_additional_detail_for?(step) && 
-        (self.additional_order_details.select { |aod| 
-           AdditionalOrderDetailDescriptor.find_by_model_name(aod.detailed.class.to_s).step_name == step.to_s
-         }).empty?
+      requires_additional_detail_for?(step) && additional_detail_for(step).blank?
     end
 
     def requires_additional_detail_for?(step)
