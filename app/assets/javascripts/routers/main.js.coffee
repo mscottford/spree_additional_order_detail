@@ -27,9 +27,9 @@ class SpreeAOD.Routers.Main extends Backbone.Router
     view = new SpreeAOD.Views.AircraftDetail(model: @aircraftDetailModel)
     $('.container_aircraft_detail').html(view.render().el)
 
-  refetch: ->
-    @collection = new SpreeAOD.Collections.AdditionalOrderDetails()
-    @collection.fetch()
+  #refetch: ->
+  #  @collection = new SpreeAOD.Collections.AdditionalOrderDetails()
+  #  @collection.fetch()
 
     #view = new SpreeAOD.Views.VehicleDetail(model: @vehicledetailModel)
     #$('.container_vehicle_detail').html(view.render().el)
