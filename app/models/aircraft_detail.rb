@@ -1,4 +1,6 @@
 class AircraftDetail < ActiveRecord::Base
+  self.include_root_in_json = false
+
   attr_accessible :aircraft_type, :year
 
   validates :aircraft_type, presence: true

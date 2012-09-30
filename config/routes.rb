@@ -6,6 +6,7 @@ Spree::Core::Engine.routes.draw do
   scope '/api' do
     resources :additional_order_details
     resources :vehicle_details
+    resources :aircraft_details
   end
 
 

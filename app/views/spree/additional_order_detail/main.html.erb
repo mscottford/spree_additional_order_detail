@@ -15,7 +15,7 @@
 
   <%= content_for :tab_contents do %>
     <%= content_tag "div", 
-                     "Loading...", 
+                     "Loading...#{type}", 
                       { id: "tab_#{aod.object_id}", 
                         class: "container_#{type} tab-pane#{ first ? ' active' : ''}",
                         data: { type.to_sym => aod.detailed, line_item_id: aod.line_item_id }

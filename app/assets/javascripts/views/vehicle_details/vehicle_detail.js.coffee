@@ -14,20 +14,16 @@ class SpreeAOD.Views.VehicleDetail extends Backbone.View
     attributes =  {line_item_id: @model.get('line_item_id'),make: $('#new_vehicle_detail_make').val(), year: $('#new_vehicle_detail_year').val()}
 
     @model.save attributes,  # this will POST or PUT, depending on isNew()
+      wait: true
       success: @handleSuccess
       error: @handleError
 
   handleSuccess: () =>
     alert('saved: id=' + @model.get('id')) # TODO: we'll update a global flash message
-    alert('and our next mandatory detail is: ' + SpreeAOD.nextIncompleteDetail())
+    SpreeAOD.nextIncompleteDetail()
 
   handleError: (vehicle_detail, response) ->
     if response.status == 422
       errors = $.parseJSON(response.responseText).errors
       for attribute, messages of errors
         alert "#{attribute} #{message}" for message in messages
-
-  #showVehicleData: ->
-  #  Backbone.history.navigate("vehicle_detail/#{@model.get('id')}", true)
-  #
-  #
