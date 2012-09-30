@@ -15,4 +15,9 @@ class Spree::AdditionalOrderDetail < ActiveRecord::Base
   
   # Member Names and Addresses would be an instance of  
   # Spree::AdditionalOrderDetailModel::MemberNamesAndAddresses
+
+  def mandatory?
+    # TODO: make this a db field
+    true
+  end
 end

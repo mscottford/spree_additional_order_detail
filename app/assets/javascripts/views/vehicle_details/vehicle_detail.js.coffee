@@ -18,7 +18,8 @@ class SpreeAOD.Views.VehicleDetail extends Backbone.View
       error: @handleError
 
   handleSuccess: () =>
-    alert('saved: id=' + @model.get('id')) # we'll update a global flash message
+    alert('saved: id=' + @model.get('id')) # TODO: we'll update a global flash message
+    alert('and our next mandatory detail is: ' + SpreeAOD.nextIncompleteDetail())
 
   handleError: (vehicle_detail, response) ->
     if response.status == 422

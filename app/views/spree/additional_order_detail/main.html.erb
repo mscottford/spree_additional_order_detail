@@ -1,16 +1,19 @@
+<div id="mandatory_details" data-mandatory-details='<%= @additional_order_details.select {|aod| aod.mandatory? }.map(&:detailed).map(&:class).map(&:name).map(&:underscore).to_json %>'</div>
+
 <% @additional_order_details.each do |aod| %>
+  <% type = aod.detailed.class.name.underscore %>
+
   <% first = (@additional_order_details.first == aod) %>
 
   <%= content_for :nav_tabs do %>
     <li <%= "class='active'" if first %> >
-      <a href="#tab_<%= aod.object_id%>" data-toggle="tab">
+      <a href="#tab_<%= aod.object_id%>" class="tab_<%= type %>" data-toggle="tab">
       <%= aod.detailed_type %>
       </a>
     </li>
   <% end %>
 
   <%= content_for :tab_contents do %>
-    <% type = aod.detailed.class.name.underscore %>
     <%= content_tag "div", 
                      "Loading...", 
                       { id: "tab_#{aod.object_id}", 
@@ -38,5 +41,6 @@
   </div>
 </div>
 
-
-<%# content_tag "div", "Loading...", id: "container", data: { vehicle_details: VehicleDetail.all} %>   <%# ,  aircraft_details: AircraftDetail.all %>
+<div class="links columns sixteen alpha omega" data-hook="cart_buttons">
+  <%= link_to t(:checkout), checkout_state_path(@order.checkout_steps.first), :class => 'button checkout primary', :id => 'checkout-link', :style=> 'display: none;'%>
+</div>
