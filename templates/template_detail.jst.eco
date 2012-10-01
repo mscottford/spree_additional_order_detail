@@ -1,0 +1,9 @@
+<!-- ./app/assets/templates/<%= model_class_name.pluralize.underscore %>/<%= model_class_name.underscore %>.jst.eco -->
+<form id="new_<%= model_class_name.underscore %>">
+
+  <label for="name">Name</label>
+  <input type="text" name="name" id="new_<%= model_class_name.underscore %>_name" value="@<%= model_class_name.underscore %>.get('name')>
+
+  <br/>
+  <input type="submit" value="Add">
+</form>

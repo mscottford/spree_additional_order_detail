@@ -5,4 +5,6 @@ en:
   notice_messages:
     additional_order_detail_descriptor_removed: "Additional Order Detail Descriptor Removed"
   additional_order_detail_descriptors: "Additional Order Detail"
+  add_additional_order_detail_descriptor: "Add Additional Order Detail"
+  add_additional_order_detail_descriptors: "Add Additional Order Detail"
   

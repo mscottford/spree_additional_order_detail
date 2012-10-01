@@ -1,3 +1,4 @@
+# not currently used
 class SpreeAOD.Collections.AdditionalOrderDetails extends Backbone.Collection
   url: '/api/additional_order_details'
   model: (attrs, options) ->
