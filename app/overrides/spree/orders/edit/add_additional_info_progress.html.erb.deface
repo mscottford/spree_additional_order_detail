@@ -1,11 +1,5 @@
 <!-- insert_after "[data-hook=clear_cart_link], #clear_cart_link[data-hook]" -->
 
 <% if @order.incomplete_additional_detail? %>
-  <h3>We will still need to collect some information before completing your order</h3>
-<% end %>
-
-<% if @order.has_additional_detail? %>
-   <br/>
-  <h4>Edit addtional order information</h4>
-  <%= additional_order_detail_steps(@order) %>
+  <p>We will still need to collect some information before completing your order</p>
 <% end %>

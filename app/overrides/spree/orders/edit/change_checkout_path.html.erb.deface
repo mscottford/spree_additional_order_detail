@@ -1,6 +1,5 @@
 <!-- replace "[data-hook=cart_buttons] code[erb-loud]:contains('checkout_state_path')" -->
 
-<% binding.pry %>
 <% if @order.incomplete_additional_detail? %>
 
   <%= link_to 'Proceed to Provide Additional Info', additional_order_details_path, :class => 'button checkout primary' %>
