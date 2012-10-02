@@ -1,0 +1,24 @@
+<div class="toolbar" data-hook="toolbar">
+  <ul class="actions">
+    <li>
+      <%= button_link_to t(:new_return_authorization), new_admin_order_return_authorization_url(@order), :icon => 'add' %>
+    </li>
+  </ul>
+  <br class="clear" />
+</div>
+
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => t(:additional_order_detail) } %>
+
+<% @order.line_items.each do |line_item|%>
+
+  <% next unless line_item.has_additional_detail? %>
+
+<h3>For <%= line_item.product.name %> </h3>
+
+<div class="admin_additional_order_detail">
+<%  line_item.additional_order_details.each do | detail | %>
+  <%= render partial: "/#{detail.detailed.class.name.underscore}", locals: {model: detail.detailed }%>
+<%  end %>
+</div>
+<% end %> <%# each line item %>
+

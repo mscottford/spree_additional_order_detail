@@ -32,7 +32,7 @@ namespace :aod do
     contents = file.read
 
     template = ERB.new(contents)
-    path = './app/assets/templates/#{model_class_name.underscore.pluralize}'
+    path = "./app/assets/templates/#{model_class_name.underscore.pluralize}"
     FileUtils.mkdir_p(path)
     File.open("#{path}/#{model_class_name.underscore}.jst.eco", "w") {|f| f.write(template.result(binding)) }
 
@@ -43,7 +43,7 @@ namespace :aod do
 
     template = ERB.new(contents)
     
-    FileUtils.mkdir_p("./app/assets/javascripts/views/#{model_class_name.underscore.pluralize}/#{model_class_name.underscore}")
+    FileUtils.mkdir_p("./app/assets/javascripts/views/#{model_class_name.underscore.pluralize}")
     File.open("./app/assets/javascripts/views/#{model_class_name.underscore.pluralize}/#{model_class_name.underscore}.js.coffee", "w") {|f| f.write(template.result(binding)) }
 
     say "
@@ -57,6 +57,9 @@ Make sure you have this in your application.rb
       end
 "
 
+    say "
+Make sure you adjust createOrSave* in your view file!!!!
+"
 
     say "
 Make sure you put this in your model file:
@@ -70,9 +73,7 @@ Make sure you put this in your model file:
 
     say "
 
-TODO: need to smartly update the main router file, but for now, copy it from the extension and update w/ lines like:
-
-You will also need to insert into your routers file (./app/assets/javascripts/routers/main.js.coffee), 
+TODO: need to smartly update the main router file(./app/assets/javascripts/routers/main.js.coffee), but for now, copy it from the extension and update w/ lines like:
  within the initialize function: 
 
     if SpreeAOD.MandatoryDetails.indexOf('#{model_class_name.underscore}') != -1
@@ -83,6 +84,7 @@ You will also need to insert into your routers file (./app/assets/javascripts/ro
 
 then in populateTabs:
 
+  if SpreeAOD.MandatoryDetails.indexOf('#{model_class_name.underscore}') != -1
     view = new SpreeAOD.Views.#{model_class_name}(model: @#{camel_case_model}Model)
     $('.container_#{model_class_name.underscore}').html(view.render().el)
 

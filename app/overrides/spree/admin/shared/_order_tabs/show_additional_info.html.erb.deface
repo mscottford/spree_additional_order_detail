@@ -1,0 +1,6 @@
+<!-- insert_bottom "[data-hook=admin_order_tabs]" -->
+<% if @order.has_additional_detail? %>
+      <li<%== ' class="active"' if current == t(:additional_order_detail) %>>
+         <%= link_to t(:additional_order_detail), additional_order_detail_admin_order_url(@order) %>
+      </li>
+<% end %>

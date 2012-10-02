@@ -9,6 +9,9 @@ Spree::Core::Engine.routes.draw do
 
 
   namespace :admin do
+    resources :orders do
+      get :additional_order_detail, on: :member
+    end
     resources :products do
       resources :additional_order_detail_descriptors do
         member do
