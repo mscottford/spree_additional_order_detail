@@ -1,0 +1,6 @@
+<!-- insert_top "[data-hook=option_value] td.actions" -->
+
+<% l = t(:additional_order_detail_descriptors) %>
+<% l += ("&nbsp;(" + f.object.additional_order_detail_descriptors.map(&:step_name).join(',') + ")&nbsp;") if f.object.additional_order_detail_descriptors.present? %>
+<%= link_to l.html_safe, selected_admin_option_value_additional_order_detail_descriptors_url(f.object) %>
+

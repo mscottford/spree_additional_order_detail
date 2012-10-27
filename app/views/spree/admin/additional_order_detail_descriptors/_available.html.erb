@@ -7,12 +7,20 @@
   <% @available_additional_order_detail_models.each do |name| %>
   <tr>
     <td><%=name %></td>
-    <td class="actions"><%= link_to icon('add') + ' ' + t("select"),
-                            url_for(:controller => "admin/additional_order_detail_descriptors",
-                                    :product_id => @product.permalink,
+    <% url_hash = {:controller => "admin/additional_order_detail_descriptors",
                                     :id => name.to_s,
                                     :action => "select",
-                                    :additional_order_detail_model_name =>  name.to_s),
+                                    :additional_order_detail_model_name =>  name.to_s}
+
+    if @object.kind_of?(Spree::Product)
+      url_hash[:product_id] = @object.permalink
+    elsif @object.kind_of?(Spree::OptionValue)
+      url_hash[:option_value_id] = @object.id
+    end
+    %>
+
+    <td class="actions"><%= link_to icon('add') + ' ' + t("select"),
+                            url_for(url_hash),
                            :remote => true, :class => 'iconlink' %>
     </td>
   </tr>

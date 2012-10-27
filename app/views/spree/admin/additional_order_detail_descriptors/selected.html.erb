@@ -1,6 +1,10 @@
+<% if @object.kind_of?(Spree::Product) %>
+<% @product = @object %>
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 <%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => I18n.t('additional_order_detail_descriptors')} %>
-
+<% elsif @object.kind_of?(Spree::OptionValue) %>
+   <h1><%= t("additional_order_detail_descriptors") %> for <%= @object.presentation %> </h1>
+<% end %>
 <div id="selected-customization-types">
   <%= render 'selected' %>
 </div>

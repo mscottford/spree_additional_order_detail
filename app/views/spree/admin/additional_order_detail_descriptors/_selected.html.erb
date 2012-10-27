@@ -9,7 +9,7 @@
       <td><%= additional_order_detail_descriptor.step_name %></td>
       <td><%= additional_order_detail_descriptor.model_name %></td>
       <td class="actions">
-      <%= link_to_with_icon 'delete',  t("remove"), remove_admin_product_additional_order_detail_descriptor_url(@product, additional_order_detail_descriptor) %>
+        <%= link_to_with_icon 'delete',  t("remove"), additional_order_detail_remove_route_for(@object, additional_order_detail_descriptor) %>
       </td>
     </tr>
   <% end %>
@@ -20,5 +20,5 @@
 
 <div id="additional-order-detail-descriptors"></div>
   <span id="new_descriptor_link_span">
-    <%= link_to icon('add') + ' ' + t("add_additional_order_detail_descriptor"), available_admin_product_additional_order_detail_descriptors_url(@product), :remote => :true, :class => 'iconlink', :id => "new_descriptor_link" %>
+    <%= link_to icon('add') + ' ' + t("add_additional_order_detail_descriptor"), additional_order_detail_available_route_for(@object), :remote => :true, :class => 'iconlink', :id => "new_descriptor_link" %>
   </span>

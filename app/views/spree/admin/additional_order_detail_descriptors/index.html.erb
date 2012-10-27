@@ -1,34 +1,22 @@
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
 
-<div class='toolbar'>
-  <ul class='actions'>
-    <li id="new_additional_order_detail_descriptor_link">
-      <% # don't know why remote=> true is present on the option_type version i copied...ok, i know now....should show up above the list below...TODO%>
-      <%= button_link_to t("new_additional_order_detail_descriptor"), new_admin_additional_order_detail_descriptor_url, {:icon => 'add', :id => 'new_additional_order_detail_descriptor_link'} %>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
-
 <h1><%= t("additional_order_detail_descriptors") %></h1>
 
 <div id="new_additional_order_detail_descriptor"></div>
 
 <table class="index sortable" id='listing_additional_order_detail_descriptors'>
   <tr>
-    <th><%= t("name") %></th>
-    <th><%= t("presentation") %></th>
-    <th><%= t("description") %></th>
+    <th><%= t("step_name") %></th>
+    <th><%= t("model_name") %></th>
+    <th><%= t("describable") %></th>
     <th></th>
   </tr>
   <% @additional_order_detail_descriptors.each do |additional_order_detail_descriptor| %>
     <tr id="<%= dom_id additional_order_detail_descriptor %>">
-      <td><span class="handle"></span> <%= additional_order_detail_descriptor.name %></td>
-      <td class='presentation'><%= additional_order_detail_descriptor.presentation %></td>
-      <td class='description'><%= additional_order_detail_descriptor.description %></td>
+      <td><span class="handle"></span> <%= additional_order_detail_descriptor.step_name %></td>
+      <td class='presentation'><%= additional_order_detail_descriptor.model_name %></td>
+      <td class='description'><%= additional_order_detail_descriptor.describable.try(:name) %></td>
       <td class="actions">
-        <%= link_to_edit(additional_order_detail_descriptor, :class => 'admin_edit_additional_order_detail_descriptor') %>
-        &nbsp;
         <%= link_to_delete(additional_order_detail_descriptor) %>
       </td>
     </tr>
