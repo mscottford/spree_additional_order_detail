@@ -1,9 +1,0 @@
-<form id="new_aircraft_detail">
-  <label for="aircraft_type">Aircraft Type</label>
-  <input type="text" name="aircraft_type" id="new_aircraft_detail_aircraft_type" value="<%= @aircraft_detail.get('aircraft_type') %>">
-  <label for="year">Year</label>
-  <input type="text" name="year" id="new_aircraft_detail_year" value="<%= @aircraft_detail.get('year') %>">
-
-  <br/>
-  <input type="submit" value="Add">
-</form>
