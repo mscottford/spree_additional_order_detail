@@ -1,5 +1,4 @@
 Spree::Core::Engine.routes.draw do
-  resources :aircraft_details
 
   get "additional_order_detail" => 'AdditionalOrderDetail#main', as: :additional_order_details
 
