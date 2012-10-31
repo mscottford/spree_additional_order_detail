@@ -66,7 +66,7 @@ Make sure you put this in your model file:
 
   self.include_root_in_json = false
 
-  def to_json(options={})
+  def as_json(options={})
     super(options.merge(except: [:created_at, :updated_at]))
   end
 "

@@ -16,6 +16,17 @@ class Spree::AdditionalOrderDetail < ActiveRecord::Base
   # Member Names and Addresses would be an instance of  
   # Spree::AdditionalOrderDetailModel::MemberNamesAndAddresses
 
+  def as_json(options={})
+    super( options.merge( { except: [:created_at, 
+                                   :updated_at], 
+                            methods: :detailed_contents
+                          }
+                        ))
+  end
+
+  def detailed_contents
+    self.detailed.as_json
+  end
   def mandatory?
     # TODO: make this a db field
     true
