@@ -1,9 +1,22 @@
 module Spree
-  class AdditionalOrderDetailController < BaseController
+  class AdditionalOrderDetailsController < BaseController
     before_filter :load_order
+
+    respond_to :html, :js
 
     def main
       @additional_order_details = assemble_relevant_details  ### todo, sort/group?
+    end
+
+    def create
+      @additional_order_detail = AdditionalOrderDetail.create(params[:additional_order_detail])
+      respond_with @additional_order_detail
+    end
+
+    def update
+      @additional_order_detail = AdditionalOrderDetail.find(params[:id])
+      @additional_order_detail.update_attributes(params[:additional_order_detail])
+      respond_with @additional_order_detail
     end
 
     private

@@ -1,11 +1,13 @@
 Spree::Core::Engine.routes.draw do
 
-  get "additional_order_detail" => 'AdditionalOrderDetail#main', as: :additional_order_details
+  get "additional_order_detail_tabs" => 'AdditionalOrderDetails#main', as: :additional_order_detail_tabs
 
   scope '/api' do
     resources :additional_order_details
   end
 
+
+  resources :additional_order_details
 
   namespace :admin do
     resources :additional_order_detail_descriptors
