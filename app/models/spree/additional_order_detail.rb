@@ -16,23 +16,8 @@ class Spree::AdditionalOrderDetail < ActiveRecord::Base
 
   belongs_to :line_item
 
-  # Company Name would be an instance of  
-  # Spree::AdditionalOrderDetailModel::CompanyName
-  
-  # Member Names and Addresses would be an instance of  
-  # Spree::AdditionalOrderDetailModel::MemberNamesAndAddresses
+  validate :check_detailed_valid_in_context
 
-  def as_json(options={})
-    super( options.merge( { except: [:created_at, 
-                                   :updated_at], 
-                            methods: :detailed_contents
-                          }
-                        ))
-  end
-
-  def detailed_contents
-    self.detailed.as_json
-  end
   def mandatory?
     # TODO: make this a db field
     true
@@ -55,5 +40,13 @@ class Spree::AdditionalOrderDetail < ActiveRecord::Base
     some_detailed = self.detailed_type.constantize.find_or_initialize_by_id(self.detailed_id)
     some_detailed.attributes = attributes
     self.detailed = some_detailed
+  end
+
+  # hack in case one additional order detail's detailed object needs to know other things about the line item
+  def check_detailed_valid_in_context
+    if detailed.respond_to? :errors_in_context?
+      err_str = detailed.errors_in_context?(self)
+      self.errors[:base] << err_str if err_str.present?
+    end
   end
 end
