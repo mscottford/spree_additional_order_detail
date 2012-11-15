@@ -41,7 +41,7 @@ module Spree
         @order.line_items.each do |line_item| 
 
           # and each type of of info that needs to be collected
-          @order.additional_detail_steps .each do |step|
+          @order.additional_detail_steps.each do |step|
 
             if line_item.requires_additional_detail_for?(step)
 
@@ -53,7 +53,7 @@ module Spree
                 # build and attach the additional order detail
                 # then build the specific associated model
                 additional_order_detail = line_item.additional_order_details.build
-                additional_order_detail.detailed = model_class_for_step(step).new
+                additional_order_detail.detailed = model_class_for_step(step).new(additional_order_detail: additional_order_detail)
                 additional_order_details << additional_order_detail
               else
                 # we have detail for this step already, so grab it
